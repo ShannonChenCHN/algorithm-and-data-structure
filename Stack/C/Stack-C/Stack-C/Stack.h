@@ -11,4 +11,23 @@
 
 #include <stdio.h>
 
+
+struct StackRecord;
+typedef struct StackRecord *Stack;
+typedef int ElementType;
+
+
+Stack CreactStack(int MaxElements);
+void DisposeStack(Stack S);
+
+int IsEmpty(Stack S);
+int IsFull(Stack S);
+void MakeEmpty(Stack S);
+
+void Push(ElementType X, Stack S);
+void Pop(Stack S);
+ElementType Top(Stack S);
+ElementType TopAndPop(Stack S);
+
+
 #endif /* Stack_h */

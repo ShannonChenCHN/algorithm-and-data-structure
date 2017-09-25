@@ -7,9 +7,18 @@
 //
 
 #include <stdio.h>
+#include "Stack.h"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
+    
     printf("Hello, World!\n");
+    
+    Stack stack = CreactStack(5);
+    Push(15, stack);
+    Push(72, stack);
+    Push(23, stack);
+    
+    printf("%d", Top(stack));
+    
     return 0;
 }

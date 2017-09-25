@@ -21,10 +21,11 @@ int main(int argc, const char * argv[]) {
         NSLog(@"Count: %lu", (unsigned long)stack.count);
         NSLog(@"Is Stack empty? %@", stack.isEmpty ? @"YES" : @"NO");
         
+        [stack push:@"Lucy"];
         
-//        for (NSString *string in stack) {
-//            NSLog(@"%@", string);
-//        }
+        for (NSString *string in stack) {
+            NSLog(@"%@", string);
+        }
         
     }
     return 0;

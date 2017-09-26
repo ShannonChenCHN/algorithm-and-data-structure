@@ -13,12 +13,23 @@ int main(int argc, const char * argv[]) {
     
     printf("Hello, World!\n");
     
-    Stack stack = CreactStack(5);
+    Stack stack = CreateStack(5);
     Push(15, stack);
     Push(72, stack);
     Push(23, stack);
     
-    printf("%d", Top(stack));
+    printf("Top of Stack: %d \n", Top(stack));
+    
+    Pop(stack);
+    printf("Top of Stack: %d \n", Top(stack));
+    
+    
+    Pop(stack);
+    printf("Top of Stack: %d \n", Top(stack));
+    
+    
+    Pop(stack);
+    printf("Top of Stack: %d \n", Top(stack));
     
     return 0;
 }

@@ -28,13 +28,6 @@ struct StackRecord
 };
 
 
-
-/**
- 栈的创建
-
- @param MaxElements 栈的最大容量
- @return <#return value description#>
- */
 Stack CreateStack(int MaxElements)
 {
     Stack S;
@@ -82,7 +75,7 @@ int IsEmpty(Stack S)
 
 int IsFull(Stack S)
 {
-    return S->TopOfStack == (MinStackSize - 1);
+    return S->TopOfStack == (S->Capacity - 1);
 }
 void MakeEmpty(Stack S)
 {

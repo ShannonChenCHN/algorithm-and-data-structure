@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "04F2D0130F6F087D1996A328ACDFE857DE0AAFB2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "40fc9312-c10f-dd1a-319b-ce57b7db7bff++148" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "04F2D0130F6F087D1996A328ACDFE857DE0AAFB2" : 9223372036854775807,
+    "40fc9312-c10f-dd1a-319b-ce57b7db7bff++148" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "88BFFBC0-1208-4570-98F9-48C22F3517F4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "04F2D0130F6F087D1996A328ACDFE857DE0AAFB2" : "DataStructure-Algorithm-Notes\/",
+    "40fc9312-c10f-dd1a-319b-ce57b7db7bff++148" : "..\/Stack"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Tests",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Stack\/Swift\/Tests\/Tests.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ShannonChenCHN\/DataStructure-Algorithm-Notes.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "04F2D0130F6F087D1996A328ACDFE857DE0AAFB2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/raywenderlich\/swift-algorithm-club",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "40fc9312-c10f-dd1a-319b-ce57b7db7bff++148"
+    }
+  ]
+}

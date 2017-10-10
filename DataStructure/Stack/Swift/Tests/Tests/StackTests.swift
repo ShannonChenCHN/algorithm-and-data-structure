@@ -1,15 +1,15 @@
 //
-//  Stack_SwiftTests.swift
-//  Stack-SwiftTests
+//  StackTests.swift
+//  Tests
 //
-//  Created by ShannonChen on 2017/9/29.
-//  Copyright © 2017年 ShannonChen. All rights reserved.
+//  Created by ShannonChen on 2017/10/10.
+//
 //
 
 import XCTest
-@testable import Stack_Swift
 
-class StackTest: XCTestCase {
+class Tests: XCTestCase {
+    
     func testEmpty() {
         var stack = Stack<Int>()
         XCTAssertTrue(stack.isEmpty)

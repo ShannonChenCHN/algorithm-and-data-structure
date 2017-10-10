@@ -17,11 +17,30 @@ typedef struct StackRecord *Stack;
 typedef int ElementType;
 
 
+/**
+ 栈的创建
+ 
+ @param MaxElements 栈的最大容量
+ @return 一个结构体指针
+ */
 Stack CreateStack(int MaxElements);
+
+
+/**
+ 销毁栈
+
+ @param S 要销毁的栈
+ */
 void DisposeStack(Stack S);
 
+
+/// 是否是空的
 int IsEmpty(Stack S);
+
+/// 是否已经满了
 int IsFull(Stack S);
+
+///
 void MakeEmpty(Stack S);
 
 void Push(ElementType X, Stack S);

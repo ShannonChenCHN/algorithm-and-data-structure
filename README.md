@@ -13,14 +13,14 @@
 
 #### 2. 队列
 - [栈（Stack）](https://github.com/ShannonChenCHN/DataStructure-Algorithm-Notes/blob/master/DataStructure/Stack/README.markdown)（后进先出）
-- [队列（Queue）]()（先进先出）
+- [队列（Queue）](https://github.com/ShannonChenCHN/DataStructure-Algorithm-Notes/tree/master/DataStructure/Queue)（先进先出）
 - 优先队列（堆）
   - 二叉堆
   - d-堆
   - 左式堆
   - 斜堆
 
-#### 3. [链表（Linked List）]()
+#### 3. [链表（Linked List）](https://github.com/ShannonChenCHN/DataStructure-Algorithm-Notes/tree/master/DataStructure/LinkedList)
 - 单向链表
 - 双向链表
 - 循环链表

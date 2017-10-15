@@ -39,7 +39,7 @@ struct Stack <T> {
         return array.count
     }
     
-    // MARK: Methods
+    // MARK: Methodus
     public mutating func push(_ newElement: T) {
         array.append(newElement)
     }

@@ -147,7 +147,8 @@ public class LinkedList<T> {
             prev = next
             next = next!.next
         }
-        assert(i == 0)
+        
+        assert(i == 0)  // 越界的处理
         
         return (prev, next)
     }

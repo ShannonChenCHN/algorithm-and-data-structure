@@ -19,4 +19,8 @@
     return self;
 }
 
+- (NSString *)description {
+    return self.value;
+}
+
 @end

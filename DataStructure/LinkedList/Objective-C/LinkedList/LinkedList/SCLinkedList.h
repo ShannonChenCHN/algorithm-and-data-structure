@@ -15,19 +15,26 @@ typedef SCLinkedListNode SCNode;
 
 /**
  一个双向链表
+ 有 head，但是没有 tail
+ 
+ 0(head/first) -> 1 -> 2 -> 3 -> 4(last)
+ 
  */
 @interface SCLinkedList<__covariant ObjectType> : NSObject
 
-@property (strong, nonatomic) SCNode *head;
-@property (assign, nonatomic) BOOL isEmpty;
-@property (strong, nonatomic) SCNode *first;
-@property (strong, nonatomic) SCNode *last;
+@property (strong, nonatomic) SCNode *head;     ///< 链表头
+@property (assign, nonatomic, readonly) BOOL isEmpty;     ///< 是否为空
+@property (strong, nonatomic, readonly) SCNode *first;    ///< 第一个节点
+@property (strong, nonatomic, readonly) SCNode *last;     ///< 最后一个节点
 
-@property (assign, nonatomic) NSUInteger count;
+@property (assign, nonatomic) NSUInteger count; ///< 节点个数
 
+
+// 插入节点
 - (void)appendNodeWithValue:(ObjectType)value;
-- (void)insertValueAtIndex:(ObjectType)value;
+- (void)insertNodeWithValue:(ObjectType)value atIndex:(NSInteger)index;
 
+// 读取节点
 - (SCNode *)nodeAtIndex:(NSInteger)index;
 - (ObjectType)objectAtIndexedSubscript:(NSInteger)index;
 
@@ -37,10 +44,10 @@ typedef SCLinkedListNode SCNode;
 - (SCNode *)removeLastNode;
 - (SCNode *)removeAllNodes;
 
-/// 翻转链表
+// 翻转链表
 - (void)reverse;
 
-// 参考 https://github.com/BlocksKit/BlocksKit/blob/master/BlocksKit/Core/NSArray%2BBlocksKit.m#L58
+// 高阶函数
 - (SCLinkedList *)map:(ObjectType (^)(ObjectType value))block;
 - (SCLinkedList *)filter:(BOOL (^)(ObjectType value))block;
 

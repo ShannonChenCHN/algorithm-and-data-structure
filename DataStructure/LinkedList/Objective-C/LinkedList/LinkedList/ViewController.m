@@ -25,17 +25,14 @@
     [linkedList insertNodeWithValue:@"Lisa" atIndex:1];
     
     NSLog(@"%li\n", linkedList.count);
-    NSLog(@"%@\n", linkedList[0]);
-    NSLog(@"%@\n", linkedList[1]);
-    NSLog(@"%@\n", linkedList[2]);
+    NSLog(@"%@\n", linkedList);
+    
+    [linkedList removeNode:[linkedList nodeAtIndex:1]];
+    NSLog(@"%li\n", linkedList.count);
+    NSLog(@"%@\n", linkedList);
     
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 @end

@@ -22,7 +22,6 @@ typedef SCLinkedListNode SCNode;
  */
 @interface SCLinkedList<__covariant ObjectType> : NSObject
 
-@property (strong, nonatomic) SCNode *head;     ///< 链表头
 @property (assign, nonatomic, readonly) BOOL isEmpty;     ///< 是否为空
 @property (strong, nonatomic, readonly) SCNode *first;    ///< 第一个节点
 @property (strong, nonatomic, readonly) SCNode *last;     ///< 最后一个节点
@@ -42,7 +41,7 @@ typedef SCLinkedListNode SCNode;
 - (SCNode *)removeNode:(SCNode *)node;
 - (SCNode *)removeNodeAtIndex:(NSUInteger)index;
 - (SCNode *)removeLastNode;
-- (SCNode *)removeAllNodes;
+- (void)removeAllNodes;
 
 // 翻转链表
 - (void)reverse;

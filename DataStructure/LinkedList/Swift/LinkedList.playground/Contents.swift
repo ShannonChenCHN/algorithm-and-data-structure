@@ -190,14 +190,57 @@ public class LinkedList<T> {
         head = nil
     }
     
+    
+    
+    
+        /*
+        
+      pre +--------+  pre +--------+  pre +--------+  pre +--------+
+ nil <----|        |<-----|        |<-----|        |<-----|        |
+          | node 0 |      | node 1 |      | node 2 |      | node 3 |
+head ---->|        |----->|        |----->|        |----->|        |-----> nil
+          +--------+ next +--------+ next +--------+ next +--------+ next 
+          
+         
+     
+     next +--------+  pre +--------+  pre +--------+  pre +--------+
+nil <-----|        |<-----|        |<-----|        |<-----|        |
+          | node 0 |      | node 1 |      | node 2 |      | node 3 |
+          |        |----->|        |----->|        |----->|        |-----> nil
+          +--------+  pre +--------+ next +--------+ next +--------+ next
+                              ∧
+                              |
+                             head
+
+     next +--------+ next +--------+  pre +--------+  pre +--------+
+nil <-----|        |<-----|        |<-----|        |<-----|        |
+          | node 0 |      | node 1 |      | node 2 |      | node 3 |
+          |        |----->|        |----->|        |----->|        |
+          +--------+  pre +--------+ pre  +--------+ next +--------+
+                                               ∧
+                                               |
+                                              head
+
+     next +--------+ next +--------+ next +--------+ next +--------+
+nil <-----|        |<-----|        |<-----|        |<-----|        |<---- head
+          | node 0 |      | node 1 |      | node 2 |      | node 3 |
+          |        |----->|        |----->|        |----->|        |-----> nil
+          +--------+  pre +--------+ pre  +--------+  pre +--------+ pre
+     
+
+        */
+    
     // 反转链表
-    // 一步一步往后走，依次将每个节点的 prev 指针和 next 指针反转过来，同时还要把 head 和 tail（如果有的话）调换一下
+    // 如上图所示：一步一步往后走，依次将每个节点的 prev 指针和 next 指针反转过来，同时还要把 head 和 tail（如果有的话）调换一下
     public func reverse() {
+        
         var node = head
 //        tail = node // If you had a tail pointer
         while let currentNode = node {
+            
             node = currentNode.next
             swap(&currentNode.next, &currentNode.previous)
+            
             head = currentNode
         }
     }

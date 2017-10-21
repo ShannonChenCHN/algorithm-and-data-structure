@@ -8,7 +8,7 @@
 
 import XCTest
 
-class Tests: XCTestCase {
+class StackTests: XCTestCase {
     
     func testEmpty() {
         var stack = Stack<Int>()

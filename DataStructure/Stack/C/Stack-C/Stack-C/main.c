@@ -15,25 +15,26 @@ int main(int argc, const char * argv[]) {
     
     Stack stack = CreateStack(5);
     
-    Push(15, stack);
+    Push(15, stack);            // [15]
     printf("Top of Stack: %d \n", Top(stack));
     
-    Push(72, stack);
+    Push(72, stack);            // [15, 72]
     printf("Top of Stack: %d \n", Top(stack));
     
-    Push(23, stack);
-    printf("Top of Stack: %d \n", Top(stack));
-    
-    
-    Pop(stack);
+    Push(23, stack);            // [15, 72, 23]
     printf("Top of Stack: %d \n", Top(stack));
     
     
-    Pop(stack);
+    Pop(stack);                 // [15, 72]
     printf("Top of Stack: %d \n", Top(stack));
     
     
-    Pop(stack);
+    Pop(stack);                 // [15]
+    printf("Top of Stack: %d \n", Top(stack));
+    
+    
+    printf("Top of Stack: %d \n", TopAndPop(stack)); // []
+    
     printf("Top of Stack: %d \n", Top(stack));
     
     return 0;

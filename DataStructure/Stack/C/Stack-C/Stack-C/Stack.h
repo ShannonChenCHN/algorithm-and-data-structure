@@ -13,7 +13,7 @@
 
 
 struct StackRecord;
-typedef struct StackRecord *Stack;
+typedef struct StackRecord *Stack; // Stack 其实是一个结构体指针
 typedef int ElementType;
 
 

@@ -1,5 +1,5 @@
-# 栈（Stack）
 
+# 栈（Stack）
 
 ### 一、什么是栈？
 栈是一种类似于数组的数据结构，但是其功能有限。
@@ -26,7 +26,7 @@
 #### 2. 只有栈顶的元素是可以访问的
 
 ```
-  Top
+   Top
 -------> ║   6    ║
          ╠════════╣
          ║   72   ║
@@ -99,123 +99,123 @@ Stack.c
 
 
 /**
-栈的声明
-*/
+ 栈的声明
+ */
 struct StackRecord
 {
-int Capacity;
-int TopOfStack;
-ElementType *Array;
+    int Capacity;
+    int TopOfStack;
+    ElementType *Array;
 };
 
 
 
 /**
-栈的创建
+ 栈的创建
 
-@param MaxElements 栈的最大容量
-@return <#return value description#>
-*/
+ @param MaxElements 栈的最大容量
+ @return <#return value description#>
+ */
 Stack CreateStack(int MaxElements)
 {
-Stack S;
-
-if (MaxElements < MinStackSize)
-{
-Error("Stack size is too small");
-}
-
-S = malloc(sizeof(struct StackRecord));
-if (S == NULL)
-{
-FatalError("Out of space");
-}
-
-S->Array = malloc(sizeof(ElementType) * MaxElements);
-if (S->Array == NULL)
-{
-FatalError("Out of space");
-}
-
-S->Capacity = MaxElements;
-
-MakeEmpty(S);
-
-return S;
+    Stack S;
+    
+    if (MaxElements < MinStackSize)
+    {
+        Error("Stack size is too small");
+    }
+    
+    S = malloc(sizeof(struct StackRecord));
+    if (S == NULL)
+    {
+        FatalError("Out of space");
+    }
+    
+    S->Array = malloc(sizeof(ElementType) * MaxElements);
+    if (S->Array == NULL)
+    {
+        FatalError("Out of space");
+    }
+    
+    S->Capacity = MaxElements;
+    
+    MakeEmpty(S);
+    
+    return S;
 }
 
 
 void DisposeStack(Stack S)
 {
-if (S != NULL)
-{
-free(S->Array);
-free(S);
-}
-
+    if (S != NULL)
+    {
+        free(S->Array);
+        free(S);
+    }
+    
 }
 
 int IsEmpty(Stack S)
 {
-return S->TopOfStack == EmptyTOS;
+    return S->TopOfStack == EmptyTOS;
 }
 
 
 int IsFull(Stack S)
 {
-return S->TopOfStack == (MinStackSize - 1);
+    return S->TopOfStack == (MinStackSize - 1);
 }
 void MakeEmpty(Stack S)
 {
-S->TopOfStack = EmptyTOS;
+    S->TopOfStack = EmptyTOS;
 }
 
 void Push(ElementType X, Stack S)
 {
-if (IsFull(S))
-{
-Error("Full Stack");
-}
-else
-{
-S->Array[++S->TopOfStack] = X;
-}
+    if (IsFull(S))
+    {
+        Error("Full Stack");
+    }
+    else
+    {
+        S->Array[++S->TopOfStack] = X;
+    }
 }
 
 void Pop(Stack S)
 {
-if (IsEmpty(S))
-{
-Error("Empty stack");
-}
-else
-{
-S->TopOfStack--;
-}
+    if (IsEmpty(S))
+    {
+        Error("Empty stack");
+    }
+    else
+    {
+        S->TopOfStack--;
+    }
 }
 
 ElementType Top(Stack S)
 {
-if (!IsEmpty(S))
-{
-return S->Array[S->TopOfStack];
-}
-
-Error("Empty stack");
-
-return 0; // return value used to avoid warning
+    if (!IsEmpty(S))
+    {
+        return S->Array[S->TopOfStack];
+    }
+    
+    Error("Empty stack");
+    
+    return 0; // return value used to avoid warning
 }
 
 ElementType TopAndPop(Stack S)
 {
-if (!IsEmpty(S))
-{
-return S->Array[S->TopOfStack--];
-}
-
-Error("Empty stack");
-
-return 0; // return value used to avoid warning
+    if (!IsEmpty(S))
+    {
+        return S->Array[S->TopOfStack--];
+    }
+    
+    Error("Empty stack");
+    
+    return 0; // return value used to avoid warning
 }
 
 ```
@@ -227,44 +227,44 @@ return 0; // return value used to avoid warning
 
 ``` Swift
 struct Stack <T> {
-
-// MARK: Properties
-fileprivate var array = [T]()
-
-public var isEmpty: Bool {
-return array.isEmpty
-}
-
-public var top: T? {
-return array.last
-}
-
-public var count: Int {
-return array.count
-}
-
-// MARK: Methods
-public mutating func push(_ newElement: T) {
-array.append(newElement)
-}
-
-// pop 最后一个元素，有可能为空
-public mutating func pop() -> T? {
-return array.popLast()
-}
+    
+    // MARK: Properties
+    fileprivate var array = [T]()
+    
+    public var isEmpty: Bool {
+        return array.isEmpty
+    }
+    
+    public var top: T? {
+        return array.last
+    }
+    
+    public var count: Int {
+        return array.count
+    }
+    
+    // MARK: Methods
+    public mutating func push(_ newElement: T) {
+        array.append(newElement)
+    }
+    
+    // pop 最后一个元素，有可能为空
+    public mutating func pop() -> T? {
+        return array.popLast()
+    }
 
 }
 
 // 实现 Sequence 协议，以支持 for - in 循环遍历
 extension Stack: Sequence {
-
-public func makeIterator() -> AnyIterator<T> {
-var curr = self
-
-return AnyIterator {
-return curr.pop()
-}
-}
+    
+    public func makeIterator() -> AnyIterator<T> {
+        var curr = self
+        
+        return AnyIterator {
+            return curr.pop()
+        }
+    }
 }
 
 ```
@@ -299,51 +299,51 @@ return curr.pop()
 
 #pragma mark - Life Cycle
 - (instancetype)init {
-
-self = [super init];
-if (self) {
-_array = [NSMutableArray array];
-}
-return self;
+    
+    self = [super init];
+    if (self) {
+        _array = [NSMutableArray array];
+    }
+    return self;
 }
 
 #pragma mark - Operation
 - (void)push:(id)newObject {
-
-if (newObject) {
-[self.array addObject:newObject];
-}
-
+    
+    if (newObject) {
+        [self.array addObject:newObject];
+    }
+    
 }
 
 - (nullable id)pop {
-
-id lastObject = self.array.lastObject;
-
-[self.array removeLastObject];
-
-return lastObject;
+    
+    id lastObject = self.array.lastObject;
+    
+    [self.array removeLastObject];
+    
+    return lastObject;
 }
 
 
 #pragma mark - Getter
 
 - (nullable id)top {
-return self.array.lastObject;
+    return self.array.lastObject;
 }
 
 - (NSUInteger)count {
-return self.array.count;
+    return self.array.count;
 }
 
 - (BOOL)isEmpty {
-return (self.array.count == 0);
+    return (self.array.count == 0);
 }
 
 #pragma mark - NSFastEnumeration
 
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id  _Nullable __unsafe_unretained [])buffer count:(NSUInteger)len {
-return [self.array countByEnumeratingWithState:state objects:buffer count:len];
+    return [self.array countByEnumeratingWithState:state objects:buffer count:len];
 }
 
 @end
@@ -391,7 +391,7 @@ open func popToViewController(_ viewController: UIViewController, animated: Bool
 // Pops until there's only a single view controller left on the stack. Returns the popped controllers.
 open func popToRootViewController(animated: Bool) -> [UIViewController]?
 
-// The top view controller on the stack.
+ // The top view controller on the stack.
 open var topViewController: UIViewController? { get }
 ```
 

@@ -1,7 +1,7 @@
 ## 数据结构和算法学习笔记
 
 ### 一、简介
-### 1. [数据结构和算法是什么？](https://github.com/ShannonChenCHN/DataStructure-Algorithm-Notes/blob/master/Introduction/数据结构和算法是什么？.md)
+### 1. [什么是数据结构和算法？](https://github.com/ShannonChenCHN/DataStructure-Algorithm-Notes/blob/master/Introduction/什么是数据结构和算法？.md)
 ### 2. [为什么要学习数据结构和算法？](https://github.com/ShannonChenCHN/DataStructure-Algorithm-Notes/blob/master/Introduction/为什么要学习数据结构和算法？.md)
 ### 3. [如何学好数据结构和算法？](https://github.com/ShannonChenCHN/DataStructure-Algorithm-Notes/blob/master/Introduction/如何学好数据结构和算法？.md)
 ### 4. [如何设计自己的算法？](https://github.com/ShannonChenCHN/DataStructure-Algorithm-Notes/blob/master/Introduction/如何设计自己的算法？.md)

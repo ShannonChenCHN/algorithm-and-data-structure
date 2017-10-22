@@ -751,10 +751,10 @@ nil <-----|        |<-----|        |<-----|        |<-----|        |<---- head
 - 链表的查找操作复杂度为 **O(n)**，无须查找的插入或者删除操作的复杂度为 **O(1)**
 
 ### 七、面试题
-1. 为什么在使用 for-in 语句遍历 NSArray 变量时，同时插入或者删除元素会导致 crash？
+1. 为什么在使用 `for-in` 语句遍历 `NSArray` 变量时，同时插入或者删除元素会导致 crash？
 
 
-### 参考资料
+### 八、参考资料
 - [raywenderlich/swift-algorithm-club: Linked List](https://github.com/raywenderlich/swift-algorithm-club/tree/master/Linked%20List)
 - [Linked list - Wikipedia](https://en.wikipedia.org/wiki/Linked_list#Related_data_structures)
 - [链表(linked list)这一数据结构具体有哪些实际应用？](https://www.zhihu.com/question/60724366?utm_medium=social&utm_source=wechat_session)

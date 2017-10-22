@@ -404,7 +404,7 @@ open var topViewController: UIViewController? { get }
 - 栈的 push，pop，top 操作的时间复杂度为 O(1)，从栈中找出最大或者最小的元素的时间复杂度为 O(n)
 - 每次我们调用函数或方法，CPU 会将函数参数、返回地址及临时变量压入到运行栈中，执行结束时，再从栈中取出来
 
-### 参考资料
+### 八、参考资料
 - [ksco/swift-algorithm-club-cn](https://github.com/ksco/swift-algorithm-club-cn/tree/master/Stack)
 - 剑指 Offer
 - 数据结构与算法分析：C 语言描述

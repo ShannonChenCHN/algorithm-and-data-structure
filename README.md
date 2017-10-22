@@ -5,6 +5,7 @@
 ### 2. [为什么要学习数据结构和算法？](https://github.com/ShannonChenCHN/DataStructure-Algorithm-Notes/blob/master/Introduction/为什么要学习数据结构和算法？.md)
 ### 3. [如何学好数据结构和算法？](https://github.com/ShannonChenCHN/DataStructure-Algorithm-Notes/blob/master/Introduction/如何学好数据结构和算法？.md)
 ### 4. [如何设计自己的算法？](https://github.com/ShannonChenCHN/DataStructure-Algorithm-Notes/blob/master/Introduction/如何设计自己的算法？.md)
+### 5. [初见：常见的数据结构和算法](https://github.com/ShannonChenCHN/DataStructure-Algorithm-Notes/blob/master/Introduction/初见：常见的数据结构和算法.md)
 
 
 ### 二、数据结构

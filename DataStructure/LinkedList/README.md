@@ -755,6 +755,7 @@ nil <-----|        |<-----|        |<-----|        |<-----|        |<---- head
 
 
 ### 八、参考资料
+- [可视化演示](https://visualgo.net/zh/list)
 - [raywenderlich/swift-algorithm-club: Linked List](https://github.com/raywenderlich/swift-algorithm-club/tree/master/Linked%20List)
 - [Linked list - Wikipedia](https://en.wikipedia.org/wiki/Linked_list#Related_data_structures)
 - [链表(linked list)这一数据结构具体有哪些实际应用？](https://www.zhihu.com/question/60724366?utm_medium=social&utm_source=wechat_session)

@@ -74,7 +74,13 @@
                   /       /      /
                  /       /      /
  after    [ "Steve", "Tim", "Grace", xxx, xxx, xxx ]
+ 
  ```
+ 
+ > 遗留问题
+ 
+ > - 数组在内存中是如何布局的？
+ > - 从数组中移除第一个元素后，数组后面的元素发生了什么变化？
  
 ### 四、队列的实现
 实现队列的方式有多种：
@@ -423,6 +429,7 @@ EfficientQueue.m
 ```
 
 ### 五、队列的应用
+在经典的 iOS 图片下载框架 `SDWebImage` 中，`SDWebImageDownloader` 类里面就通过一个 `executionOrder` 来决定下载队列中下载任务的先后顺序，是 FIFO，还是 LIFO。
 
 
 ### 六、我所理解的队列
@@ -430,7 +437,7 @@ EfficientQueue.m
 - 队列的元素操作顺序是先进先出（FIFO）
 
 
-### 七、面试题（TODO）
+### 七、相关面试题（TODO）
 
 ### 八、参考资料
 - [raywenderlich/swift-algorithm-club/Queue](https://github.com/raywenderlich/swift-algorithm-club/tree/master/Queue)

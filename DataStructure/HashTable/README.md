@@ -95,3 +95,7 @@
 - 四个基本功能：增删改查
 - 元素个数
 - 是否为空
+
+### 参考
+- [raywenderlich/swift-algorithm-club/Hash Table](https://github.com/raywenderlich/swift-algorithm-club/tree/master/Hash%20Table)
+- [散列表 - 维基百科](https://zh.wikipedia.org/wiki/哈希表)

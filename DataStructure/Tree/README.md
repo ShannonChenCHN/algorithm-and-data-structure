@@ -64,6 +64,7 @@
 
 ### 七、参考
 - [树 - 维基百科](https://zh.wikipedia.org/wiki/树_(数据结构))
+- [树 (图论) - 维基百科](https://zh.wikipedia.org/wiki/树_(图论))
 - [树 - 百度百科](https://baike.baidu.com/item/树/2699484?fr=aladdin#2)
 - [数据结构与算法中，树一般会应用在哪些方面？为什么？](https://www.zhihu.com/question/20176446)
 - [数据结构中各种树](http://blog.jobbole.com/111680/)

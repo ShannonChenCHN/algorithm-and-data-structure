@@ -396,7 +396,7 @@ open var topViewController: UIViewController? { get }
 ```
 
 ### 七、我所理解的栈
-- 栈是一种表
+- 栈是一种线性表（list）
 - 栈的存取规则是**后进先出**
 - 通常只能访问栈顶的元素
 - 通常栈只支持 push，pop，top 操作

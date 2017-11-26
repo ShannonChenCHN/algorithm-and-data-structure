@@ -9,41 +9,73 @@
 
 
 ### 二、数据结构
-#### 1. 数组
-- 二维数组
+#### 1. 数组（Variations on arrays）
+- 二维数组（Array2D）
+- 位数组（Bit Set）
+- 静态数组（Fixed Size Array）
+- 有序表（Ordered Array）
 
-#### 2. 队列
+#### 2. 队列（Queues）
 - [栈（Stack）](https://github.com/ShannonChenCHN/DataStructure-Algorithm-Notes/blob/master/DataStructure/Stack/README.markdown)（后进先出）
 - [队列（Queue）](https://github.com/ShannonChenCHN/DataStructure-Algorithm-Notes/tree/master/DataStructure/Queue)（先进先出）
-- 优先队列（堆）
-  - 二叉堆
-  - d-堆
-  - 左式堆
-  - 斜堆
+- 双端队列（Deque）
+- 环形缓冲区（Ring Buffer）
+
 
 #### 3. [链表（Linked List）](https://github.com/ShannonChenCHN/DataStructure-Algorithm-Notes/tree/master/DataStructure/LinkedList)
 - 单向链表
 - 双向链表
 - 循环链表
+- 跳表（Skip-List）
 
-#### 4. 树
-- 树
-- 二叉树
-- 二叉查找树
-- AVL 树
-- 伸展树
-- B-树
+#### 4. 树（Trees）
+- 树（Tree）
+- 二叉树（Binary Tree）
+- 二叉查找树（Binary Search Tree (BST)）
+- 平衡二叉树/AVL 树（Balanced Binary Tree/AVL Tree）
+- 红黑树（Red-Black Tree）
+- 伸展树（Splay Tree）
+- B-树（B-Tree）
+- 线索二叉树（Threaded Binary Tree）
+- 前缀树/字典树（Trie）
 
-#### 5. 哈希（散列）
-- 哈希表
-- 哈希函数
+#### 5. 哈希/散列（Hashing）
+- 哈希表（Hash Table）
+- 哈希函数（Hash Functions）
 
-#### 6. 集合
+#### 6. 优先队列（Priority Queue）
+- 堆（Heap）
+- 二叉堆
+- d-堆
+- 左式堆
+- 斜堆
 
-#### 7. 图
+
+#### 7. 集合（Sets）
+
+#### 8. 图（Graphs）
+- 图（Graph）
+- 宽度优先搜索（Breadth-First Search, BFS）
+- 广度优先搜索（Depth-First Search, DFS）
+- 最短路径（Shortest Path）
+  - 无权最短路径（Shortest Path on an unweighted tree）
+  - 单源最短路径(Single Source Shortest Path)
+  - 所有点对最短路径(All Pair Shortest Path)
+  - Dijkstra 算法（Dijkstra's shortest path algorithm）
+- 最小生成树(Minimum Spanning Tree)
+  - 无权最小生成树
+  - 有权最小生成树
+    - Kruskal 算法
+    - Prim 算法
+
 
 ### 三、算法
 #### 1. 查找
+- 线性查找/顺序查找
+- 二分查找
+- 分块查找z
+- 并查集(Union-Find)
+
 #### 2. 字符串查找
 #### 3. 排序
 #### 4. 压缩算法

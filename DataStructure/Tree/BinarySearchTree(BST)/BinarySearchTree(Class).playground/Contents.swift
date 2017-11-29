@@ -278,7 +278,7 @@ public class BinarySearchTree<T: Comparable> {
     }
     
     // 检查树的合法性：不论哪一层极，父节点永远比左侧子节点大，永远比右侧子节点小
-    public func isBST(minValue minValue: T, maxValue: T) -> Bool {
+    public func isBST(minValue: T, maxValue: T) -> Bool {
         
         if value < minValue || value > maxValue {
             return false

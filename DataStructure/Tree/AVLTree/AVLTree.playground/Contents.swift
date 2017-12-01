@@ -35,8 +35,11 @@ import UIKit
  - 旋转侧子树
  - 旋转侧对侧子树
  
- ##### 旋转要点
- - 找离新插入的节点最近的不平衡的树进行调整
+ ##### 旋转要点/规律
+ - 一种平衡策略就是从找离新插入的节点最近的不平衡的树进开始调整，然后往上递归平衡
+ - 不平衡的树一定在从新插入的节点到根节点的路径上
+ - 每一次需要平衡的是该“局部不平衡树”的根节点到新插入“节点”路径上的连续3个不同层级的节点
+ - 对于一个合法的BST来说，任意节点的左子树上的所有节点一定比右子树的所有节点值要小，所以，我们在旋转后，可以按大小顺序重新调整子树的位置
  
  
  ### 实现 AVL 树
@@ -55,10 +58,19 @@ import UIKit
  http://www.jianshu.com/p/6988699625d5
  http://www.cnblogs.com/huangxincheng/archive/2012/07/22/2603956.html
  http://blog.csdn.net/vesper305/article/details/13614403
+ http://blog.csdn.net/liyong199012/article/details/29219261
  
  */
 
+/**
+ Swift 相关知识点：
+ 
+ 1. Optionals and String Interpolation
 
+ https://stackoverflow.com/questions/42543007/how-to-solve-string-interpolation-produces-a-debug-description-for-an-optional
+ https://segmentfault.com/a/1190000007791822
+ 
+ */
 
 public class TreeNode<Key: Comparable, Payload> {
     public typealias Node = TreeNode<Key, Payload>
@@ -235,7 +247,19 @@ extension AVLTree {
 extension AVLTree {
     
     
-    /// 平衡因子
+    /// 更新树的高度
+    fileprivate func updateHeightUpwards(node: Node?) {
+        if let node = node {
+            let lHeight = node.leftChild?.height ?? 0
+            let rHeight = node.rightChild?.height ?? 0
+            
+            node.height = max(lHeight, rHeight) + 1  // 如果都没有子树，为嘛还要加1 ???
+            
+            updateHeightUpwards(node: node.parent)
+        }
+    }
+    
+    /// 平衡因子 = 左子树的高度 - 右子树的高度
     fileprivate func lrDifference(node: Node?) -> Int {
         let lHeight = node?.leftChild?.height ?? 0
         let rHeight = node?.rightChild?.height ?? 0
@@ -249,11 +273,16 @@ extension AVLTree {
         }
     
         // 更新高度
+        // 为什么更新子树的高度 ???
+        updateHeightUpwards(node: node.leftChild)
+        updateHeightUpwards(node: node.rightChild)
         
-        
-        //
-        var nodes = [Node?](repeatElement(nil, count: 3))     // 3 个要参与旋转的节点：第 0 个最大，第 1 个最小，第 2 个始终作为父节点，所以不大不小
-        var subtrees = [Node?](repeatElement(nil, count: 4))  // 4 个子树：参与旋转的其他子节点
+        // 3 个参与旋转的点
+        var pivot: Node? = nil
+        var pivotLeftChild: Node? = nil
+        var pivotRightChild: Node? = nil
+
+        var subtrees = [Node?](repeatElement(nil, count: 4))  // 4 个子树：参与旋转的节点的子节点，subtrees 中的元素是从小到大排列的
         let nodeParent = node.parent
     
         // 计算当前节点的平衡因子
@@ -264,29 +293,31 @@ extension AVLTree {
             
             // 计算左子树的平衡因子
             if lrDifference(node: node.leftChild) > 0 {
-                // 左-左                                                   //        C
-                nodes[0] = node                                           //       /
-                nodes[2] = node.leftChild                                 //      B
-                nodes[1] = node.leftChild?.leftChild                      //     /
-                                                                          //    A
-                // 参与旋转的其他子节点
-                subtrees[0] = node.leftChild?.leftChild?.leftChild
-                subtrees[1] = node.leftChild?.leftChild?.rightChild
-                subtrees[2] = node.leftChild?.rightChild
-                subtrees[3] = node.rightChild
+                // 左-左                                                     //       (6)
+                pivotRightChild = node                                      //       /  \
+                pivot = node.leftChild                                      //     (4)   7
+                pivotLeftChild = node.leftChild?.leftChild                  //     / \
+                                                                            //   (2)  5      ---->
+                                                                            //   / \
+                // 参与旋转的其他子节点                                         //  1   3
+                subtrees[0] = pivotLeftChild?.leftChild
+                subtrees[1] = pivotLeftChild?.rightChild
+                subtrees[2] = pivot?.rightChild
+                subtrees[3] = pivotRightChild?.rightChild
                 
             } else {
-                // 左-右                                                   //        C
-                nodes[0] = node                                           //       /
-                nodes[1] = node.leftChild                                 //      A
-                nodes[2] = node.leftChild?.rightChild                     //       \
-                                                                          //        B
-                // 参与旋转的其他子节点
-                subtrees[0] = node.leftChild?.leftChild
-                subtrees[1] = node.leftChild?.rightChild?.leftChild
-                subtrees[2] = node.leftChild?.rightChild?.rightChild
-                subtrees[3] = node.rightChild
-                
+                // 左-右                                                         //        (10)
+                pivotRightChild = node                                          //         / \
+                pivotLeftChild = node.leftChild                                 //       (5) 11
+                pivot = node.leftChild?.rightChild                              //       / \
+                                                                                //      4  (8)
+                                                                                //         / \
+                // 参与旋转的其他子节点                                             //        6   9
+                subtrees[0] = pivotLeftChild?.leftChild
+                subtrees[1] = pivot?.leftChild
+                subtrees[2] = pivot?.rightChild
+                subtrees[3] = pivotRightChild?.rightChild
+
             }
             
             
@@ -295,30 +326,31 @@ extension AVLTree {
             
             // 计算右子树的平衡因子
             if lrDifference(node: node.rightChild) < 0 {
-                // 右-右                                                   //        A
-                nodes[1] = node                                           //         \
-                nodes[2] = node.rightChild                                //          B
-                nodes[0] = node.rightChild?.rightChild                    //           \
-                                                                          //            C
+                // 右-右                                                           //       (2)
+                pivotLeftChild = node                                             //       / \
+                pivot = node.rightChild                                           //      1  (4)
+                pivotRightChild = node.rightChild?.rightChild                     //         / \
+                                                                                  //        3  (7)
+                                                                                  //           / \
+                // 参与旋转的其他子节点                                               //          6   8
+                subtrees[0] = pivotLeftChild?.leftChild
+                subtrees[1] = pivot?.leftChild
+                subtrees[2] = pivotRightChild?.leftChild
+                subtrees[3] = pivotRightChild?.rightChild
                 
-                // 参与旋转的其他子节点
-                subtrees[0] = node.rightChild?.rightChild?.leftChild
-                subtrees[1] = node.leftChild
-                subtrees[2] = node.rightChild?.leftChild
-                subtrees[3] = node.rightChild?.rightChild?.rightChild
                 
             } else {
-                // 右-左                                                   //        A
-                nodes[1] = node                                           //         \
-                nodes[2] = node.rightChild                                //          C
-                nodes[0] = node.rightChild?.rightChild                    //         /
-                                                                          //        B
-                
-                // 参与旋转的其他子节点
-                subtrees[0] = node.leftChild
-                subtrees[1] = node.rightChild?.leftChild?.leftChild
-                subtrees[2] = node.rightChild?.leftChild?.rightChild
-                subtrees[3] = node.rightChild?.rightChild
+                // 右-左                                                          //        (3)
+                pivotLeftChild = node                                            //        / \
+                pivotRightChild = node.rightChild                                //       2  (9)
+                pivot = node.rightChild?.leftChild                               //          / \
+                                                                                 //        (7) 10
+                                                                                 //        / \
+                // 参与旋转的其他子节点                                              //       6   8
+                subtrees[0] = pivotLeftChild?.leftChild
+                subtrees[1] = pivot?.leftChild
+                subtrees[2] = pivot?.rightChild
+                subtrees[3] = pivotRightChild?.rightChild
             }
             
             
@@ -328,40 +360,99 @@ extension AVLTree {
             return
         }
         
-        // 旋转后， nodes[2] 替代原来的父节点，也就是当前节点
+        // 旋转后， 作为转轴的节点 pivot 替代原来的父节点，也就是当前节点
         if node.isRoot {
-            root = nodes[2]
+            root = pivot
             root?.parent = nil
         } else if node.isLeftChild {
-            nodeParent?.leftChild = nodes[2]
-            nodes[2]?.parent = nodeParent
+            nodeParent?.leftChild = pivot
+            pivot?.parent = nodeParent
         } else if node.isRightChild {
-            nodeParent?.rightChild = nodes[2]
-            nodes[2]?.parent = nodeParent
+            nodeParent?.rightChild = pivot
+            pivot?.parent = nodeParent
         }
         
-        nodes[2]?.leftChild = nodes[1]
-        nodes[1]?.parent = nodes[2]
-        nodes[2]?.rightChild = nodes[0]
-        nodes[0]?.parent = nodes[2]
+        // 连接转轴节点和左右子节点
+        pivot?.leftChild = pivotLeftChild
+        pivotLeftChild?.parent = pivot
+        pivot?.rightChild = pivotRightChild
+        pivotRightChild?.parent = pivot
         
         
-        nodes[1]?.leftChild = subtrees[0]
-        subtrees[0]?.parent = nodes[1]
-        nodes[1]?.rightChild = subtrees[1]
-        subtrees[1]?.parent = nodes[1]
+        // 重新连接参与旋转的节点和相关子节点的连接， subtrees 中的元素是从小到大排列的
+        pivotLeftChild?.leftChild = subtrees[0]
+        subtrees[0]?.parent = pivotLeftChild
+        pivotLeftChild?.rightChild = subtrees[1]
+        subtrees[1]?.parent = pivotLeftChild
         
         
-        nodes[0]?.leftChild = subtrees[2]
-        subtrees[2]?.parent = nodes[0]
-        nodes[0]?.rightChild = subtrees[3]
-        subtrees[3]?.parent = nodes[1]
+        pivotRightChild?.leftChild = subtrees[2]
+        subtrees[2]?.parent = pivotRightChild
+        pivotRightChild?.rightChild = subtrees[3]
+        subtrees[3]?.parent = pivotRightChild
         
         // 更新高度
-        
+        updateHeightUpwards(node: pivotLeftChild)
+        updateHeightUpwards(node: pivotRightChild)
         
         // 调整父节点
-        balance(node: nodes[2]?.parent)
+        balance(node: pivot?.parent)
     }
     
 }
+
+
+// MARK: - Debugging
+extension TreeNode: CustomDebugStringConvertible {
+    public var debugDescription: String {
+        var s = "key: \(key), payload: \(String(describing: payload)), height: \(height)"
+        if let parent = parent {
+            s += ", parent: \(parent.key)"
+        }
+        if let left = leftChild {
+            s += ", left = [" + left.debugDescription + "]"
+        }
+        if let right = rightChild {
+            s += ", right = [" + right.debugDescription + "]"
+        }
+        return s
+    }
+}
+
+extension AVLTree: CustomDebugStringConvertible {
+    public var debugDescription: String {
+        return root?.debugDescription ?? "[]"
+    }
+}
+
+extension TreeNode: CustomStringConvertible {
+    public var description: String {
+        var s = ""
+        if let left = leftChild {
+            s += "(\(left.description)) <- "
+        }
+        s += "\(key)"
+        if let right = rightChild {
+            s += " -> (\(right.description))"
+        }
+        return s
+    }
+}
+
+extension AVLTree: CustomStringConvertible {
+    public var description: String {
+        return root?.description ?? "[]"
+    }
+}
+
+
+let avlTree = AVLTree<Int, Int>.init()
+avlTree.insert(key: 6)
+avlTree.insert(key: 4)
+avlTree.insert(key: 7)
+avlTree.insert(key: 5)
+avlTree.insert(key: 2)
+avlTree.insert(key: 1)
+avlTree.insert(key: 3)
+print(avlTree)
+print(avlTree.root?.height)

@@ -29,7 +29,7 @@ import UIKit
  
  ### 遍历：
  - 先序遍历：根-左-右
- - 中序遍历：左-根-右
+ - 中序遍历/顺序遍历/深度优先：左-根-右
  - 后序遍历：左-右-根
  
  ### 删除节点：
@@ -219,7 +219,7 @@ public class BinarySearchTree<T: Comparable> {
             replacement = nil  // 如果没有子节点就最直接移除
         }
         
-        // 切断替代者的现有连接
+        // 切断替代者的现有连接：递归移除，直到叶节点
         replacement?.remove()
         
         /* 将树中的当前节点替换为替代者 */

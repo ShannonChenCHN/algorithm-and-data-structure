@@ -39,7 +39,33 @@ import UIKit
  - 一种平衡策略就是从找离新插入的节点最近的不平衡的树进开始调整，然后往上递归平衡
  - 不平衡的树一定在从新插入的节点到根节点的路径上
  - 每一次需要平衡的是该“局部不平衡树”的根节点到新插入“节点”路径上的连续3个不同层级的节点
+ - 旋转这 3 个节点后，得到的结果一定是最小的节点作为左子树，最大的节点作为右子树，大小居中的节点作为这颗“局部不平衡树”的根节点
  - 对于一个合法的BST来说，任意节点的左子树上的所有节点一定比右子树的所有节点值要小，所以，我们在旋转后，可以按大小顺序重新调整子树的位置
+ 
+ 
+           4            3
+          /   右旋      / \
+左-左     3    ---->   2   4
+        /
+       2
+ 
+         2                3
+          \      左旋     / \
+右-右       3    ----->  2   4
+            \
+             4
+ 
+          4                  4              3
+         /       先左旋      /     再右旋    /  \
+左-右    2       ----->     3     ---->    2   4
+         \                /
+          3              2
+ 
+         2                 2                  3
+          \     先右旋       \      再左旋     /  \
+ 右-左     4    ------>       3      --->    2   4
+         /                    \
+        3                      4
  
  
  ### 实现 AVL 树
@@ -253,7 +279,7 @@ extension AVLTree {
             let lHeight = node.leftChild?.height ?? 0
             let rHeight = node.rightChild?.height ?? 0
             
-            node.height = max(lHeight, rHeight) + 1  // 如果都没有子树，为嘛还要加1 ???
+            node.height = max(lHeight, rHeight) + (node.hasAnyChild ? 1 : 0)
             
             updateHeightUpwards(node: node.parent)
         }
@@ -267,13 +293,12 @@ extension AVLTree {
     }
     
     
-    func balance(node: Node?) {
+    fileprivate func balance(node: Node?) {
         guard let node = node else {
             return
         }
     
-        // 更新高度
-        // 为什么更新子树的高度 ???
+        // 因为插入了新节点，所以需要更新高度，用于后面计算平衡因子
         updateHeightUpwards(node: node.leftChild)
         updateHeightUpwards(node: node.rightChild)
         
@@ -293,11 +318,11 @@ extension AVLTree {
             
             // 计算左子树的平衡因子
             if lrDifference(node: node.leftChild) > 0 {
-                // 左-左                                                     //       (6)
-                pivotRightChild = node                                      //       /  \
-                pivot = node.leftChild                                      //     (4)   7
-                pivotLeftChild = node.leftChild?.leftChild                  //     / \
-                                                                            //   (2)  5      ---->
+                // 左-左                                                     //       (6)                   (4)
+                pivotRightChild = node                                      //       /  \                  /  \
+                pivot = node.leftChild                                      //     (4)   7               (2)  (6)
+                pivotLeftChild = node.leftChild?.leftChild                  //     / \                   / \  / \
+                                                                            //   (2)  5      ---->      1  3 5   7
                                                                             //   / \
                 // 参与旋转的其他子节点                                         //  1   3
                 subtrees[0] = pivotLeftChild?.leftChild
@@ -306,13 +331,13 @@ extension AVLTree {
                 subtrees[3] = pivotRightChild?.rightChild
                 
             } else {
-                // 左-右                                                         //        (10)
-                pivotRightChild = node                                          //         / \
-                pivotLeftChild = node.leftChild                                 //       (5) 11
-                pivot = node.leftChild?.rightChild                              //       / \
-                                                                                //      4  (8)
-                                                                                //         / \
-                // 参与旋转的其他子节点                                             //        6   9
+                // 左-右                                                     //        (10)                  (8)
+                pivotRightChild = node                                      //         / \                  / \
+                pivotLeftChild = node.leftChild                             //       (5) 11               (5) (10)
+                pivot = node.leftChild?.rightChild                          //       / \      ----->      / \  / \
+                                                                            //      4  (8)               4  6 9   11
+                                                                            //         / \
+                // 参与旋转的其他子节点                                         //        6   9
                 subtrees[0] = pivotLeftChild?.leftChild
                 subtrees[1] = pivot?.leftChild
                 subtrees[2] = pivot?.rightChild
@@ -326,13 +351,13 @@ extension AVLTree {
             
             // 计算右子树的平衡因子
             if lrDifference(node: node.rightChild) < 0 {
-                // 右-右                                                           //       (2)
-                pivotLeftChild = node                                             //       / \
-                pivot = node.rightChild                                           //      1  (4)
-                pivotRightChild = node.rightChild?.rightChild                     //         / \
-                                                                                  //        3  (7)
-                                                                                  //           / \
-                // 参与旋转的其他子节点                                               //          6   8
+                // 右-右                                                      //       (2)                   (4)
+                pivotLeftChild = node                                        //       / \                   /  \
+                pivot = node.rightChild                                      //      1  (4)               (2)  (7)
+                pivotRightChild = node.rightChild?.rightChild                //         / \    ----->     / \  / \
+                                                                             //        3  (7)            1  3 6   8
+                                                                             //           / \
+                // 参与旋转的其他子节点                                          //          6   8
                 subtrees[0] = pivotLeftChild?.leftChild
                 subtrees[1] = pivot?.leftChild
                 subtrees[2] = pivotRightChild?.leftChild
@@ -340,13 +365,13 @@ extension AVLTree {
                 
                 
             } else {
-                // 右-左                                                          //        (3)
-                pivotLeftChild = node                                            //        / \
-                pivotRightChild = node.rightChild                                //       2  (9)
-                pivot = node.rightChild?.leftChild                               //          / \
-                                                                                 //        (7) 10
-                                                                                 //        / \
-                // 参与旋转的其他子节点                                              //       6   8
+                // 右-左                                                      //        (3)                 (7)
+                pivotLeftChild = node                                        //        / \                 /  \
+                pivotRightChild = node.rightChild                            //       2  (9)             (3)  (9)
+                pivot = node.rightChild?.leftChild                           //          / \   ---->     / \  / \
+                                                                             //        (7) 10           2  6 8   10
+                                                                             //        / \
+                // 参与旋转的其他子节点                                          //       6   8
                 subtrees[0] = pivotLeftChild?.leftChild
                 subtrees[1] = pivot?.leftChild
                 subtrees[2] = pivot?.rightChild
@@ -391,7 +416,7 @@ extension AVLTree {
         pivotRightChild?.rightChild = subtrees[3]
         subtrees[3]?.parent = pivotRightChild
         
-        // 更新高度
+        // 平衡旋转后，需要重新更新高度
         updateHeightUpwards(node: pivotLeftChild)
         updateHeightUpwards(node: pivotRightChild)
         
@@ -399,6 +424,108 @@ extension AVLTree {
         balance(node: pivot?.parent)
     }
     
+}
+
+// MARK: Delete node
+
+extension AVLTree {
+    
+    // 删除指定 key
+    public func delete(key: Key) {
+        
+        // 如果是根节点，直接清空
+        if size == 1 {
+            root = nil
+            size -= 1
+        } else if let node = search(key: key, node: root) { // 找出对应的节点，如果没找到，就什么都不做
+            delete(node: node)
+            size -= 1
+        }
+    }
+    
+    // 删除指定节点
+    private func delete(node: Node) {
+        
+        // 叶节点可以直接移除，再调整平衡
+        if node.isLeaf {
+            
+            // 是不是根节点？
+            if let nodeParent = node.parent {
+                // 检测合法性
+                guard node.isLeftChild || node.isRightChild else {
+                    fatalError("Error: tree is valid.")
+                }
+                
+                if node.isLeftChild {
+                    nodeParent.leftChild = nil
+                } else if node.isRightChild {
+                    nodeParent.rightChild = nil
+                }
+                
+                balance(node: nodeParent)
+                
+            } else {
+                // 如果是根节点
+                root = nil
+            }
+            
+        } else {
+            // 如果不是叶节点，就递归替换，直到找到一个叶节点
+            if let replacement = node.leftChild?.maximum(), node !== replacement {
+                node.key = replacement.key
+                node.payload = replacement.payload
+                delete(node: replacement)
+                
+            } else if let replacement = node.rightChild?.minimum(), node !== replacement {
+                node.key = replacement.key
+                node.payload = replacement.payload
+                delete(node: replacement)
+            }
+        }
+    }
+}
+
+// MARK: - Advanced Stuff
+extension AVLTree {
+    
+    // 中序遍历/顺序遍历：左-根-右
+    public func doInOrder(node: Node?, _ completion: (Node) -> Void) {
+        if let node = node {
+            doInOrder(node: node.leftChild) { lnode in
+                completion(lnode)
+            }
+            completion(node)
+            doInOrder(node: node.rightChild) { rnode in
+                completion(rnode)
+            }
+        }
+    }
+    
+    // 先序遍历：根-左-右
+    public func doInPreOrder(node: Node?, _ completion: (Node) -> Void) {
+        if let node = node {
+            completion(node)
+            doInPreOrder(node: node.leftChild) { lnode in
+                completion(lnode)
+            }
+            doInPreOrder(node: node.rightChild) { rnode in
+                completion(rnode)
+            }
+        }
+    }
+    
+    // 后序遍历：左-右-根
+    public func doInPostOrder(node: Node?, _ completion: (Node) -> Void) {
+        if let node = node {
+            doInPostOrder(node: node.leftChild) { lnode in
+                completion(lnode)
+            }
+            doInPostOrder(node: node.rightChild) { rnode in
+                completion(rnode)
+            }
+            completion(node)
+        }
+    }
 }
 
 
@@ -446,13 +573,28 @@ extension AVLTree: CustomStringConvertible {
 }
 
 
-let avlTree = AVLTree<Int, Int>.init()
-avlTree.insert(key: 6)
-avlTree.insert(key: 4)
-avlTree.insert(key: 7)
-avlTree.insert(key: 5)
-avlTree.insert(key: 2)
-avlTree.insert(key: 1)
-avlTree.insert(key: 3)
-print(avlTree)
-print(avlTree.root?.height)
+let tree = AVLTree<Int, Int>.init()
+tree.insert(key: 6)
+print(tree)
+tree.insert(key: 4)
+print(tree)
+tree.insert(key: 7)
+print(tree)
+tree.insert(key: 5)
+print(tree)
+tree.insert(key: 2)
+print(tree)
+tree.insert(key: 1)
+print(tree)
+tree.insert(key: 3)
+
+print(tree)
+print(tree.debugDescription)
+
+tree.delete(key: 2)
+print(tree)
+print(tree.debugDescription)
+
+tree.doInOrder(node: tree.root) { (node) in
+    print(node.key)
+}

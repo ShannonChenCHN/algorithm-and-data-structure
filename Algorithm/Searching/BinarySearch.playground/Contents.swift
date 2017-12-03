@@ -15,6 +15,9 @@ import UIKit
  前提条件是：数组必须是有序数组
  
  复杂度：O(log n)
+ 
+ 应用：
+ 二分查找适用于那种一经建立就很少改动而又经常需要查找的线性表。
 
  https://github.com/raywenderlich/swift-algorithm-club/tree/master/Binary%20Search
  https://en.wikipedia.org/wiki/Binary_search_algorithm

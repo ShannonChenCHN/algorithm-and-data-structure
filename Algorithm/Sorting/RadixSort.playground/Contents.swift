@@ -26,3 +26,14 @@ import UIKit
  2, 24, 45, 66, 75, 90, 170, 802
  
  */
+
+
+func radixSort<Int>(_ list: inout [Int]) {
+    
+    for element in list {
+        
+    }
+}
+
+let array = [170, 45, 75, 90, 802, 24, 2, 66]
+radixSort(&list)

@@ -1,6 +1,11 @@
-//: Playground - noun: a place where people can play
+//
+//  HeapSort.swift
+//  
+//
+//  Created by ShannonChen on 2017/12/6.
+//
 
-import UIKit
+import Foundation
 
 /*
  
@@ -8,6 +13,8 @@ import UIKit
  
  基本思想：堆排序是一种树形选择排序，是对直接选择排序的有效改进。
  
+ 
+ 复杂度：O(n lg n)
  
  示意图：
  
@@ -56,3 +63,29 @@ import UIKit
  6. 如此循环，直到全部排好序
  
  */
+
+
+extension Heap {
+    
+    /// 堆排序
+    public mutating func sort() -> [T] {
+        
+        // 每次将没排序的部分的最后一个元素和第一个元素互换，然后再调整平衡
+        let lastIndex = elements.count - 1
+        for lastUnsortedIndex in stride(from: lastIndex, through: 1, by: -1) {
+            
+            elements.swapAt(lastUnsortedIndex, 0)
+            shiftDownElement(at: 0, heapSize: lastUnsortedIndex)
+            
+            print(elements)
+        }
+        return elements
+    }
+}
+
+public func heapsort<T>(_ a: [T], _ sort: @escaping (T, T) -> Bool) -> [T] {
+    let reverseOrder = { i1, i2 in sort(i2, i1) }
+    var h = Heap(array: a, sort: reverseOrder)
+    return h.sort()
+
+}

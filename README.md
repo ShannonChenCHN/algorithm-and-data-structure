@@ -90,3 +90,4 @@
 - [ksco/swift-algorithm-club-cn](https://github.com/ksco/swift-algorithm-club-cn)
 - [数据结构与算法分析：C语言描述](https://book.douban.com/subject/1139426/)
 - [冉文杰的算法学习笔记：nonstriater/Learn-Algorithms](https://github.com/nonstriater/Learn-Algorithms)
+- [soapyigu/LeetCode-Swift](https://github.com/soapyigu/LeetCode-Swift#array)

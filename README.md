@@ -100,6 +100,7 @@
 #### 6. 机器学习
 
 ### 延伸阅读
+- [剑指Offer在线编程 - 牛客网](https://www.nowcoder.com/ta/coding-interviews?page=1)
 - [算法珠玑——一个最精简的题库](https://www.gitbook.com/book/soulmachine/algorithm-essentials/details)
 - [《编程之法：面试和算法心得》](https://www.gitbook.com/book/wizardforcel/the-art-of-programming-by-july/details)
 - [Swift Algorithm Club - Ray Wenderlich](https://www.raywenderlich.com/category/swift/swift-algorithm-club)

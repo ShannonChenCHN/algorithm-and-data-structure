@@ -109,3 +109,4 @@
 - [数据结构与算法分析：C语言描述](https://book.douban.com/subject/1139426/)
 - [冉文杰的算法学习笔记：nonstriater/Learn-Algorithms](https://github.com/nonstriater/Learn-Algorithms)
 - [soapyigu/LeetCode-Swift](https://github.com/soapyigu/LeetCode-Swift#array)
+- [左程云：程序员该如何学习算法？](https://zhuanlan.zhihu.com/p/30821652)

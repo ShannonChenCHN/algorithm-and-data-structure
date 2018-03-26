@@ -20,8 +20,7 @@ ListNode* CreateListNode(int value) {
 
 /// 连接链表节点
 void ConnectListNodes(ListNode* pCurrent, ListNode* pNext) {
-    if(pCurrent == nullptr)
-    {
+    if(pCurrent == nullptr) {
         printf("Error to connect two nodes.\n");
         exit(1);
     }

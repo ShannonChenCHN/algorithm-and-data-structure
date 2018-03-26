@@ -34,7 +34,10 @@
 ## 字符串搜索
 
 
-
+## 循环和递归
+- [宽度优先（BFS）](https://github.com/raywenderlich/swift-algorithm-club/tree/master/Breadth-First%20Search)
+  - [二叉树的深度优先遍历、广度优先遍历和非递归遍历](http://www.cnblogs.com/way_testlife/archive/2010/10/07/1845264.html)
+- [深度优先（DFS）](https://github.com/raywenderlich/swift-algorithm-club/blob/master/Depth-First%20Search)
 
 
 ### 参考

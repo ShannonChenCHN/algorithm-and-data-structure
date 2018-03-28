@@ -70,7 +70,7 @@ func binarySearch<T: Comparable>(_ a: [T], key: T, range: Range<Int>) -> Int? {
     }
 }
 
-/// 遍历方式实现的二分查找
+/// 循环的方式实现的二分查找
 func binarySearch<T: Comparable>(_ array: [T], key: T) -> Int? {
     var lowerBound = 0
     var upperBound = array.count

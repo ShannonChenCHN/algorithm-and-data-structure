@@ -44,6 +44,7 @@ template <typename T>
 class CQueue {
     
 public:
+    // 构造函数和析构函数
     CQueue(void);
     ~CQueue(void);
     
@@ -67,6 +68,7 @@ CQueue<T>::CQueue(void) {
 
 template <typename T>
 CQueue<T>::~CQueue(void) {
+    
 }
 
 /// 入列

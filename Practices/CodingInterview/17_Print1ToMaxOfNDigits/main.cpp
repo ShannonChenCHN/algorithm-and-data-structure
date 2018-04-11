@@ -34,10 +34,11 @@
 // 方案一：从 1 开始一个一个累加，从最低位开始加，逢十进一
 /*
   [0][0][1][\0]
+ ...
+ [0][0][9][\0]
+ [0][1][0][\0]
  
  */
-
-
 bool Increment(char* numString) {
     
     // 从最低位开始加，逢十进一
@@ -61,6 +62,10 @@ bool Increment(char* numString) {
     }
     
     return false;
+}
+
+void PrintNumber(char* numString) {
+    
 }
 
 void PrintOneToMaxOfNDigits_Solution1(int maxDigit) {
@@ -90,7 +95,7 @@ void PrintOneToMaxOfNDigits_Solution2(int maxDigit) {
 
 int main(int argc, const char * argv[]) {
     
-    PrintOneToMaxOfNDigits_Solution1(0);
+    PrintOneToMaxOfNDigits_Solution1(2);
     
     return 0;
 }

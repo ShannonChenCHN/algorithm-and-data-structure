@@ -50,7 +50,7 @@ void PrintNumber(char* numString) {
 
 //===================================== 方案一 循环打印 ====================================
 
-bool IncrementNumString_Solution1(char* numString);
+bool IncrementNumString(char* numString);
 
 // 方案一：循环的方式
 void PrintOneToMaxOfNDigits_Solution1(int maxDigit) {
@@ -63,7 +63,7 @@ void PrintOneToMaxOfNDigits_Solution1(int maxDigit) {
     memset(numString, '0', maxDigit);
     numString[maxDigit] = '\0';
     
-    while (IncrementNumString_Solution1(numString)) { // 一个一个累加
+    while (IncrementNumString(numString)) { // 一个一个累加
 //        printf("%s\n", numString);
         PrintNumber(numString);
         printf("\n");
@@ -83,7 +83,7 @@ void PrintOneToMaxOfNDigits_Solution1(int maxDigit) {
  [0][1][0][\0]
  
  */
-bool IncrementNumString_Solution1(char* numString) {
+bool IncrementNumString(char* numString) {
     
     // 从最低位开始加，逢十进一
     int maxDigit = (int)strlen(numString);
@@ -111,7 +111,7 @@ bool IncrementNumString_Solution1(char* numString) {
 
 //===================================== 方案一 递归打印 ====================================
 
-void IncrementNumString_Solution2(int startDigit, char* numString);
+void PrintOneToMaxOfNDigitsRecursively(int startIndex, char* numString);
 
 // 方案二：递归打印各位数
 /**
@@ -139,20 +139,21 @@ void PrintOneToMaxOfNDigits_Solution2(int maxDigit) {
     memset(numString, '0', maxDigit);
     numString[maxDigit] = '\0';
     
-    int currentDigit = 0;
-    int nextDigit = currentDigit + 1;
+    int currentIndex = 0;
+    int nextIndex = currentIndex + 1;
     for (int i = 0; i <= 9; i++) {
         numString[0] = '0' + i;
-        IncrementNumString_Solution2(nextDigit, numString);
+        PrintOneToMaxOfNDigitsRecursively(nextIndex, numString);
     }
     
+    delete [] numString;
 }
 
 
-void IncrementNumString_Solution2(int startDigit, char* numString) {
+void PrintOneToMaxOfNDigitsRecursively(int startIndex, char* numString) {
     int length = (int)strlen(numString);
     
-    if (startDigit >= length) {
+    if (startIndex >= length) {
 //        printf("%s\n", numString);
         PrintNumber(numString);
         printf("\n");
@@ -160,10 +161,10 @@ void IncrementNumString_Solution2(int startDigit, char* numString) {
     }
     
     
-    int nextDigit = startDigit + 1;
+    int nextIndex = startIndex + 1;
     for (int i = 0; i <= 9; i++) {
-        numString[startDigit] = '0' + i;
-        IncrementNumString_Solution2(nextDigit, numString);
+        numString[startIndex] = '0' + i;
+        PrintOneToMaxOfNDigitsRecursively(nextIndex, numString);
     }
 }
 

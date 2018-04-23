@@ -25,21 +25,65 @@
  
  
  
- 方案二：递归打印各位数
- 
- 
  */
 
 
-// 方案一：从 1 开始一个一个累加，从最低位开始加，逢十进一
+
 /*
-  [0][0][1][\0]
+ 公共函数：打印字符串数字的有效位
+ 最左边的 0 不打印，从最高位开始遍历，直到发现第一个不为 0 的数字，开始打印
+ */
+void PrintNumber(char* numString) {
+    
+    bool hasStartedPrinting = false;
+    int length = (int)strlen(numString);
+    for (int i = 0; i < length; i++) {
+        if (hasStartedPrinting == false && numString[i] == '0') {
+            continue;
+        }
+        
+        printf("%c", numString[i]);
+        hasStartedPrinting = true;
+    }
+}
+
+
+//===================================== 方案一 循环打印 ====================================
+
+bool IncrementNumString_Solution1(char* numString);
+
+// 方案一：循环的方式
+void PrintOneToMaxOfNDigits_Solution1(int maxDigit) {
+    if (maxDigit <= 0) {
+        return;
+    }
+    
+    // 初始化一个数组，用来存储各位的数字，最后有一位 \0
+    char* numString = new char[maxDigit+1];
+    memset(numString, '0', maxDigit);
+    numString[maxDigit] = '\0';
+    
+    while (IncrementNumString_Solution1(numString)) { // 一个一个累加
+//        printf("%s\n", numString);
+        PrintNumber(numString);
+        printf("\n");
+    }
+    
+    
+    delete [] numString;
+    
+}
+
+
+// 从 1 开始一个一个累加，从最低位开始加，逢十进一
+/*
+ [0][0][1][\0]
  ...
  [0][0][9][\0]
  [0][1][0][\0]
  
  */
-bool Increment(char* numString) {
+bool IncrementNumString_Solution1(char* numString) {
     
     // 从最低位开始加，逢十进一
     int maxDigit = (int)strlen(numString);
@@ -48,7 +92,7 @@ bool Increment(char* numString) {
         int currentDigitASCII = numString[currentDigit] - '0'; // 取出当前位字符转成一个整数
         
         if (currentDigitASCII == 9) {
-            // 逢十进一
+            // 逢十进一，当前位置 0
             numString[currentDigit] = '0';
             continue;
             
@@ -61,41 +105,73 @@ bool Increment(char* numString) {
         
     }
     
+    // 当超过 n 位最大数的时候就返回 false
     return false;
 }
 
-void PrintNumber(char* numString) {
-    
-}
+//===================================== 方案一 递归打印 ====================================
 
-void PrintOneToMaxOfNDigits_Solution1(int maxDigit) {
+void IncrementNumString_Solution2(int startDigit, char* numString);
+
+// 方案二：递归打印各位数
+/**
+ 通过递归实现数字字符串打印
+ 可以把这个数字字符串想象成树，从最高位开始，每设置一位的值（0~9）就往下一位递归设置，直到最后一位就开始打印
+ 假如 n=2
+ 
+ 十位            个位
+  0   -->  0, 1, 2, ... 9
+  1   -->  0, 1, 2, ... 9
+      ...
+  9   -->  0, 1, 2, ... 9
+ 
+ 
+ 
+ */
+void PrintOneToMaxOfNDigits_Solution2(int maxDigit) {
+    
     if (maxDigit <= 0) {
         return;
     }
     
-    char* numString = new char[maxDigit+1]; // 最后有一位 \0
+    // 初始化一个数组，用来存储各位的数字，最后有一位 \0
+    char* numString = new char[maxDigit+1];
     memset(numString, '0', maxDigit);
     numString[maxDigit] = '\0';
     
-    while (Increment(numString)) {
-        printf("%s\n", numString);
+    int currentDigit = 0;
+    int nextDigit = currentDigit + 1;
+    for (int i = 0; i <= 9; i++) {
+        numString[0] = '0' + i;
+        IncrementNumString_Solution2(nextDigit, numString);
     }
-    
-    
-    delete [] numString;
     
 }
 
 
-void PrintOneToMaxOfNDigits_Solution2(int maxDigit) {
+void IncrementNumString_Solution2(int startDigit, char* numString) {
+    int length = (int)strlen(numString);
+    
+    if (startDigit >= length) {
+//        printf("%s\n", numString);
+        PrintNumber(numString);
+        printf("\n");
+        return;
+    }
     
     
+    int nextDigit = startDigit + 1;
+    for (int i = 0; i <= 9; i++) {
+        numString[startDigit] = '0' + i;
+        IncrementNumString_Solution2(nextDigit, numString);
+    }
 }
 
 
 int main(int argc, const char * argv[]) {
     
     PrintOneToMaxOfNDigits_Solution1(2);
+    PrintOneToMaxOfNDigits_Solution2(2);
     
     return 0;
 }

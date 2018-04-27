@@ -14,7 +14,7 @@
 /// 链表节点
 struct ListNode {
     int       m_nValue;
-    ListNode *m_pNext;
+    ListNode* m_pNext;
 };
 
 /// 创建链表节点

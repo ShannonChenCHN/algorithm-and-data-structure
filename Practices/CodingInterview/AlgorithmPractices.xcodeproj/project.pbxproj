@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		580333EF20941C7100AE0392 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 580333EE20941C7100AE0392 /* main.cpp */; };
+		580333F420941D9A00AE0392 /* List.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5852DC2E2068F7D400613589 /* List.cpp */; };
 		5852DC132068971500613589 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5852DC122068971500613589 /* main.m */; };
 		5852DC1E2068974D00613589 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 5852DC1D2068974D00613589 /* main.c */; };
 		5852DC292068F6DE00613589 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5852DC282068F6DE00613589 /* main.cpp */; };
@@ -33,6 +35,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		580333EA20941C7100AE0392 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		5852DC0E2068971500613589 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -198,6 +209,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		580333EC20941C7100AE0392 /* 18_02_DeleteDuplicatedNode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 18_02_DeleteDuplicatedNode; sourceTree = BUILT_PRODUCTS_DIR; };
+		580333EE20941C7100AE0392 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5852DC102068971500613589 /* 04_FindInPartiallySortedMatrix */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 04_FindInPartiallySortedMatrix; sourceTree = BUILT_PRODUCTS_DIR; };
 		5852DC122068971500613589 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5852DC1B2068974D00613589 /* 05_ReplaceSpaces */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 05_ReplaceSpaces; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,6 +259,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		580333E920941C7100AE0392 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5852DC0D2068971500613589 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -375,6 +395,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		580333ED20941C7100AE0392 /* 18_02_DeleteDuplicatedNode */ = {
+			isa = PBXGroup;
+			children = (
+				580333EE20941C7100AE0392 /* main.cpp */,
+			);
+			path = 18_02_DeleteDuplicatedNode;
+			sourceTree = "<group>";
+		};
 		5852DC112068971500613589 /* 04_FindInPartiallySortedMatrix */ = {
 			isa = PBXGroup;
 			children = (
@@ -509,6 +537,7 @@
 				58D5786D207A0BD2007EB4DA /* 16_Power */,
 				58C95D46207B8006006CCD57 /* 17_Print1ToMaxOfNDigits */,
 				58531F13208DBDC600ADB52B /* 18_01_DeleteNodeInList */,
+				580333ED20941C7100AE0392 /* 18_02_DeleteDuplicatedNode */,
 				587AE73A2066ACAF00926994 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -534,6 +563,7 @@
 				58D5786C207A0BD2007EB4DA /* 16_Power */,
 				58C95D45207B8006006CCD57 /* 17_Print1ToMaxOfNDigits */,
 				58531F12208DBDC600ADB52B /* 18_01_DeleteNodeInList */,
+				580333EC20941C7100AE0392 /* 18_02_DeleteDuplicatedNode */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -589,6 +619,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		580333EB20941C7100AE0392 /* 18_02_DeleteDuplicatedNode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 580333F220941C7100AE0392 /* Build configuration list for PBXNativeTarget "18_02_DeleteDuplicatedNode" */;
+			buildPhases = (
+				580333E820941C7100AE0392 /* Sources */,
+				580333E920941C7100AE0392 /* Frameworks */,
+				580333EA20941C7100AE0392 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = 18_02_DeleteDuplicatedNode;
+			productName = 18_02_DeleteDuplicatedNode;
+			productReference = 580333EC20941C7100AE0392 /* 18_02_DeleteDuplicatedNode */;
+			productType = "com.apple.product-type.tool";
+		};
 		5852DC0F2068971500613589 /* 04_FindInPartiallySortedMatrix */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5852DC162068971500613589 /* Build configuration list for PBXNativeTarget "04_FindInPartiallySortedMatrix" */;
@@ -904,6 +951,10 @@
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = ShannonChen;
 				TargetAttributes = {
+					580333EB20941C7100AE0392 = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+					};
 					5852DC0F2068971500613589 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
@@ -1008,11 +1059,21 @@
 				58D5786B207A0BD2007EB4DA /* 16_Power */,
 				58C95D44207B8006006CCD57 /* 17_Print1ToMaxOfNDigits */,
 				58531F11208DBDC600ADB52B /* 18_01_DeleteNodeInList */,
+				580333EB20941C7100AE0392 /* 18_02_DeleteDuplicatedNode */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		580333E820941C7100AE0392 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				580333F420941D9A00AE0392 /* List.cpp in Sources */,
+				580333EF20941C7100AE0392 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5852DC0C2068971500613589 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1165,6 +1226,32 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		580333F020941C7100AE0392 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		580333F120941C7100AE0392 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		5852DC142068971500613589 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1603,6 +1690,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		580333F220941C7100AE0392 /* Build configuration list for PBXNativeTarget "18_02_DeleteDuplicatedNode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				580333F020941C7100AE0392 /* Debug */,
+				580333F120941C7100AE0392 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5852DC162068971500613589 /* Build configuration list for PBXNativeTarget "04_FindInPartiallySortedMatrix" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

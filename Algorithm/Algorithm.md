@@ -43,3 +43,4 @@
 ### 参考
 - http://blog.csdn.net/shan9liang/article/details/7533466
 - http://www.jianshu.com/p/7d037c332a9d
+- 常用排序算法总结[(一)](http://www.cnblogs.com/eniac12/p/5329396.html) 、[(二)](http://www.cnblogs.com/eniac12/p/5332117.html) （推荐）

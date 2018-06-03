@@ -110,3 +110,5 @@
 - [冉文杰的算法学习笔记：nonstriater/Learn-Algorithms](https://github.com/nonstriater/Learn-Algorithms)
 - [soapyigu/LeetCode-Swift](https://github.com/soapyigu/LeetCode-Swift#array)
 - [左程云：程序员该如何学习算法？](https://zhuanlan.zhihu.com/p/30821652)
+- [LintCode](https://www.lintcode.com/problem/)
+- [LINTCODE / LEETCODE 参考答案查询 - 九章算法](https://www.jiuzhang.com/solution/)

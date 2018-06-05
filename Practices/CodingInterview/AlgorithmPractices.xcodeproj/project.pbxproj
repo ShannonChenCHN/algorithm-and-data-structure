@@ -712,10 +712,10 @@
 		58F84D7720C391210038DC4D /* String */ = {
 			isa = PBXGroup;
 			children = (
+				5852DC1C2068974D00613589 /* 05_ReplaceSpaces */,
 				5828F2CF20C4D2CA001CD0A4 /* 58_01_ReverseWordsInSentence */,
 				5828F2E020C50C06001CD0A4 /* 58_02_LeftRotateString */,
 				587AE770206BD47A00926994 /* 67_StringToInt */,
-				5852DC1C2068974D00613589 /* 05_ReplaceSpaces */,
 			);
 			path = String;
 			sourceTree = "<group>";

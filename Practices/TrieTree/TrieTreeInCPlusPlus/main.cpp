@@ -10,14 +10,15 @@
 
 
 // 1. 定义数节点结构：首先定义一个表征 Trie 节点的数据结构，其实就是一个树的节点，每个节点包括 0~26 个子节点。
-//    另外，每个节点有一个变量来记录是否是叶节点。
+//    根节点为空节点，另外，每个节点有一个变量来记录是否是单词词尾节点。
 //
 // 2. 插入单词：从前往后依次遍历单词的每一个字符，每位字符对应树的每一层（根节点为空，所以根节点除外），
 //    如果树中对应的层中没有该字符，就在这一层中该字符对应的位置（0~25）插入一个节点
 //
-// 3. 打印所有单词：这里可以用先序遍历来实现，用一个数组来保存所有的“浏览”过的路径，如果遇到一个是单词结尾字符的节点，就打印数组中的所有字符。
+// 3. 打印所有单词：这里可以用先序遍历来实现，核心思路在于记录路径。
+//    我们可以用一个数组来保存所有的“浏览”过的路径，如果遇到一个是单词结尾字符的节点，就打印数组中的所有字符。
 //
-// 4. 查找单词
+// 4. 查找单词：满足两个条件，一是单词的每个字母都有对应的节点，二是单词末尾字符对应的节点正好是单词结尾节点
 
 
 #include <iostream>
@@ -84,6 +85,10 @@ void insert(TrieNode *pRoot, const char *key) {
 void printWord(char *word, int length) {
     
     for (int i = 0; i < length; i++) {
+        // we don't use printf("%s") to print string here,
+        // because probably the real word we want to print is not equal to this word variable.
+        // for example, if the word variable's value is "their", but what we really want to print
+        // is "the", so in this case, we don't want to print the whole string.
         printf("%c", word[i]);
     }
     
@@ -114,10 +119,45 @@ void printAllWordsInTheTrie(TrieNode *pRoot, char *wordPath, int level = 0) {
     
 }
 
-/// Search whether a word is present in the Trie or not
+/// Search whether a word is present in the Trie or not.
+/// The success case is when there exist a path and the last node in the path is also end-of-word.
 bool searchForWordInTrie(const char *key, TrieNode *pRoot) {
-    return true;
+    if (pRoot == nullptr) {
+        printf("\"%s\" %s", key, "is NOT present in the Trie.");
+        return false;
+    }
+    
+    // 遍历整个字符串，如果当前的字符对应的节点为空，则没有找到；
+    // 如果单词最后一个字母对应的节点不是单词末尾节点，也是没有找到
+    
+    bool isKeyPresent = true;
+    int keyLength = (int)strlen(key);
+    
+    TrieNode *pNode = pRoot;
+    for (int i = 0; i < keyLength; i++) {
+        int index = CHAR_TO_INDEX(key[i]);
+        TrieNode *pCurrentNode = pNode->children[index];
+        
+        if (pCurrentNode == nullptr) {
+            isKeyPresent = false;
+            break;
+        }
+        
+        if (i == keyLength - 1 && pCurrentNode->isEndOfWord == false) {
+            isKeyPresent = false;
+            break;
+        }
+        
+        pNode = pCurrentNode;
+    }
+    
+    printf("\"%s\" %s", key, isKeyPresent ? "is present in the Trie." : "is NOT present in the Trie.");
+    
+    return isKeyPresent;
 }
+
+
+
 
 int main(int argc, const char * argv[]) {
     
@@ -136,6 +176,16 @@ int main(int argc, const char * argv[]) {
     // Print all words in the trie
     char wordPath[MAX_WORD_LENGTH];
     printAllWordsInTheTrie(pRoot, wordPath);
+    printf("\n\n");
+    
+    searchForWordInTrie("the", pRoot);
+    printf("\n\n");
+    
+    searchForWordInTrie("thc", pRoot);
+    printf("\n\n");
+    
+    searchForWordInTrie("there", pRoot);
+    printf("\n\n");
     
     return 0;
 }

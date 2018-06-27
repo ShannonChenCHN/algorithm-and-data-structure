@@ -8,20 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		584E386220E258CB00EA53AA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 584E386120E258CB00EA53AA /* main.cpp */; };
-		58999A9120D0AAA000071E1E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58999A9020D0AAA000071E1E /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		584E385D20E258CB00EA53AA /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-		58999A8B20D0AAA000071E1E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -35,19 +25,10 @@
 /* Begin PBXFileReference section */
 		584E385F20E258CB00EA53AA /* TrieTreeInCPlusPlus */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TrieTreeInCPlusPlus; sourceTree = BUILT_PRODUCTS_DIR; };
 		584E386120E258CB00EA53AA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		58999A8D20D0AAA000071E1E /* TrieTree */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TrieTree; sourceTree = BUILT_PRODUCTS_DIR; };
-		58999A9020D0AAA000071E1E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		584E385C20E258CB00EA53AA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		58999A8A20D0AAA000071E1E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -68,7 +49,6 @@
 		58999A8420D0AAA000071E1E = {
 			isa = PBXGroup;
 			children = (
-				58999A8F20D0AAA000071E1E /* TrieTree */,
 				584E386020E258CB00EA53AA /* TrieTreeInCPlusPlus */,
 				58999A8E20D0AAA000071E1E /* Products */,
 			);
@@ -77,18 +57,9 @@
 		58999A8E20D0AAA000071E1E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				58999A8D20D0AAA000071E1E /* TrieTree */,
 				584E385F20E258CB00EA53AA /* TrieTreeInCPlusPlus */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		58999A8F20D0AAA000071E1E /* TrieTree */ = {
-			isa = PBXGroup;
-			children = (
-				58999A9020D0AAA000071E1E /* main.m */,
-			);
-			path = TrieTree;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -111,23 +82,6 @@
 			productReference = 584E385F20E258CB00EA53AA /* TrieTreeInCPlusPlus */;
 			productType = "com.apple.product-type.tool";
 		};
-		58999A8C20D0AAA000071E1E /* TrieTree */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 58999A9420D0AAA000071E1E /* Build configuration list for PBXNativeTarget "TrieTree" */;
-			buildPhases = (
-				58999A8920D0AAA000071E1E /* Sources */,
-				58999A8A20D0AAA000071E1E /* Frameworks */,
-				58999A8B20D0AAA000071E1E /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = TrieTree;
-			productName = TrieTree;
-			productReference = 58999A8D20D0AAA000071E1E /* TrieTree */;
-			productType = "com.apple.product-type.tool";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -138,10 +92,6 @@
 				ORGANIZATIONNAME = ShannonChen;
 				TargetAttributes = {
 					584E385E20E258CB00EA53AA = {
-						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Automatic;
-					};
-					58999A8C20D0AAA000071E1E = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
 					};
@@ -159,7 +109,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				58999A8C20D0AAA000071E1E /* TrieTree */,
 				584E385E20E258CB00EA53AA /* TrieTreeInCPlusPlus */,
 			);
 		};
@@ -171,14 +120,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				584E386220E258CB00EA53AA /* main.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		58999A8920D0AAA000071E1E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				58999A9120D0AAA000071E1E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,24 +247,6 @@
 			};
 			name = Release;
 		};
-		58999A9520D0AAA000071E1E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L32PN8QKLZ;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		58999A9620D0AAA000071E1E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L32PN8QKLZ;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -341,15 +264,6 @@
 			buildConfigurations = (
 				58999A9220D0AAA000071E1E /* Debug */,
 				58999A9320D0AAA000071E1E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		58999A9420D0AAA000071E1E /* Build configuration list for PBXNativeTarget "TrieTree" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				58999A9520D0AAA000071E1E /* Debug */,
-				58999A9620D0AAA000071E1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

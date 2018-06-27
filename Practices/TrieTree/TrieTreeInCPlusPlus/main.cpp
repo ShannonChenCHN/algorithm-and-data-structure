@@ -14,12 +14,18 @@
 //
 // 2. 插入单词：从前往后依次遍历单词的每一个字符，每位字符对应树的每一层（根节点为空，所以根节点除外），
 //    如果树中对应的层中没有该字符，就在这一层中该字符对应的位置（0~25）插入一个节点
+//
+// 3. 打印所有单词：这里可以用先序遍历来实现，用一个数组来保存所有的“浏览”过的路径，如果遇到一个是单词结尾字符的节点，就打印数组中的所有字符。
+//
+// 4. 查找单词
 
 
 #include <iostream>
 
 /// Alphabet size (# of symbols)
 #define ALPHABET_SIZE   26
+
+#define MAX_WORD_LENGTH   100
 
 /// Calucate array size
 #define ARRAY_SIZE(a) sizeof(a)/sizeof(a[0])
@@ -29,17 +35,19 @@
 #define CHAR_TO_INDEX(c) ((int)c - (int)'a')
 
 
+
+
 /// Trie node
 struct TrieNode {
     TrieNode *children[ALPHABET_SIZE];
-    bool isLeaf;
+    bool isEndOfWord;  // isEndOfWord field is true, if the node represent an end of word. Else, it is false.
 };
 
 
 /// Returns new trie node (initialized to NULLs)
 TrieNode *creatNode(void) {
     TrieNode *pNode = new TrieNode;
-    pNode->isLeaf = false;
+    pNode->isEndOfWord = false;
     
     for (int i = 0; i < ALPHABET_SIZE; i++) {
         pNode->children[i] = nullptr;
@@ -63,41 +71,52 @@ void insert(TrieNode *pRoot, const char *key) {
         int indexOfCurrentChar = CHAR_TO_INDEX(key[level]);
         if (pNode->children[indexOfCurrentChar] == nullptr) {
             pNode->children[indexOfCurrentChar] = creatNode();
-        } else {
-            pNode->children[indexOfCurrentChar]->isLeaf = false;
         }
         
         pNode = pNode->children[indexOfCurrentChar];
     }
     
-    // 3. Set the node that doesn't have any children as leaf.
-    pNode->isLeaf = true;
-    for (int index = 0; index < ALPHABET_SIZE; index++) {
-        if (pNode->children[index] != nullptr) {
-            pNode->isLeaf = false;
-        }
-    }
+    // 3. while inserting the last node, we also set the value of isEndOfWord to true.
+    pNode->isEndOfWord = true;
     
 }
 
-void printTrie(TrieNode *pRoot) {
+void printWord(char *word, int length) {
+    
+    for (int i = 0; i < length; i++) {
+        printf("%c", word[i]);
+    }
+    
+    printf(", ");
+}
+
+void printAllWordsInTheTrie(TrieNode *pRoot, char *wordPath, int level = 0) {
     
     // pre-order
     for (int index = 0; index < ALPHABET_SIZE; index++) {
         TrieNode *currentNode = pRoot->children[index];
         
         if (currentNode != nullptr) {
-            char rootChar = index + 'a';
-            printf("%c", rootChar);
             
-            if (currentNode->isLeaf) {
-                printf(", ");
-            } else {
-                printTrie(currentNode);
+            // Store every character on the tracking path
+            char rootChar = index + 'a';
+            wordPath[level] = rootChar;
+            
+            // If this node is the end of a word, print the word
+            if (currentNode->isEndOfWord) {
+                printWord(wordPath, level+1);
             }
+            
+            // Recursively tracking
+            printAllWordsInTheTrie(currentNode, wordPath, level+1);
         }
     }
     
+}
+
+/// Search whether a word is present in the Trie or not
+bool searchForWordInTrie(const char *key, TrieNode *pRoot) {
+    return true;
 }
 
 int main(int argc, const char * argv[]) {
@@ -114,7 +133,9 @@ int main(int argc, const char * argv[]) {
         insert(pRoot, keys[i]);
     }
     
-    printTrie(pRoot);
+    // Print all words in the trie
+    char wordPath[MAX_WORD_LENGTH];
+    printAllWordsInTheTrie(pRoot, wordPath);
     
     return 0;
 }

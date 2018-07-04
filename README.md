@@ -112,3 +112,6 @@
 - [左程云：程序员该如何学习算法？](https://zhuanlan.zhihu.com/p/30821652)
 - [LintCode](https://www.lintcode.com/problem/)
 - [LINTCODE / LEETCODE 参考答案查询 - 九章算法](https://www.jiuzhang.com/solution/)
+- [swift standard library](https://developer.apple.com/documentation/swift/swift_standard_library)
+- [Swift Standard Library.playground](https://developer.apple.com/sample-code/swift/downloads/standard-library.zip)
+- [Swift Algorithms Prototype](https://github.com/apple/swift/blob/master/test/Prototypes/Algorithms.swift)

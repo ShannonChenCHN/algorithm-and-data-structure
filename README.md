@@ -9,7 +9,7 @@
 ### 6. [复杂度分析](https://github.com/ShannonChenCHN/algorithm-and-data-structure/issues/2)
 
 ### 二、数据结构
-#### 1. 数组（Variations on arrays）
+#### 1. [数组（Variations on arrays）](https://github.com/ShannonChenCHN/algorithm-and-data-structure/tree/master/DataStructure/Array)
 - 二维数组（Array2D）
 - 位数组（Bit Set）
 - 静态数组（Fixed Size Array）

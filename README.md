@@ -115,3 +115,4 @@
 - [swift standard library](https://developer.apple.com/documentation/swift/swift_standard_library)
 - [Swift Standard Library.playground](https://developer.apple.com/sample-code/swift/downloads/standard-library.zip)
 - [Swift Algorithms Prototype](https://github.com/apple/swift/blob/master/test/Prototypes/Algorithms.swift)
+- [数据结构和算法之美 - 极客时间](http://gk.link/a/100NW)

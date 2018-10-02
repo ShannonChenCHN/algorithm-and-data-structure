@@ -6,7 +6,7 @@
 ### 3. [如何学好数据结构和算法？](https://github.com/ShannonChenCHN/DataStructure-Algorithm-Notes/blob/master/Introduction/如何学好数据结构和算法？.md)
 ### 4. [如何设计自己的算法？](https://github.com/ShannonChenCHN/DataStructure-Algorithm-Notes/blob/master/Introduction/如何设计自己的算法？.md)
 ### 5. [初见：常见的数据结构和算法](https://github.com/ShannonChenCHN/DataStructure-Algorithm-Notes/blob/master/Introduction/初见：常见的数据结构和算法.md)
-
+### 6. [复杂度分析](https://github.com/ShannonChenCHN/algorithm-and-data-structure/issues/2)
 
 ### 二、数据结构
 #### 1. 数组（Variations on arrays）

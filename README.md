@@ -100,13 +100,32 @@
 #### 6. 机器学习
 
 ### 延伸阅读
+
+- 书籍
+  - 入门
+    - 《大话数据结构》
+    - 《算法图解》
+  - 基础
+    - 《数据结构和算法分析》（有多种不同语言的版本）
+  - 面试
+    - 《剑指offer》
+    - 《编程珠玑》
+    - 《编程之美》
+  - 进阶
+    - 《算法》
+  - 理论
+    - 《算法导论》
+    - 《计算机程序设计艺术》
+  - 科普
+    - 《数学之美》
+
+- [数据结构和算法之美 - 极客时间](http://gk.link/a/100NW)【推荐】
 - [剑指Offer在线编程 - 牛客网](https://www.nowcoder.com/ta/coding-interviews?page=1)
 - [算法珠玑——一个最精简的题库](https://www.gitbook.com/book/soulmachine/algorithm-essentials/details)
 - [《编程之法：面试和算法心得》](https://www.gitbook.com/book/wizardforcel/the-art-of-programming-by-july/details)
 - [Swift Algorithm Club - Ray Wenderlich](https://www.raywenderlich.com/category/swift/swift-algorithm-club)
 - [raywenderlich/swift-algorithm-club](https://github.com/raywenderlich/swift-algorithm-club)
 - [ksco/swift-algorithm-club-cn](https://github.com/ksco/swift-algorithm-club-cn)
-- [数据结构与算法分析：C语言描述](https://book.douban.com/subject/1139426/)
 - [冉文杰的算法学习笔记：nonstriater/Learn-Algorithms](https://github.com/nonstriater/Learn-Algorithms)
 - [soapyigu/LeetCode-Swift](https://github.com/soapyigu/LeetCode-Swift#array)
 - [左程云：程序员该如何学习算法？](https://zhuanlan.zhihu.com/p/30821652)
@@ -115,4 +134,4 @@
 - [swift standard library](https://developer.apple.com/documentation/swift/swift_standard_library)
 - [Swift Standard Library.playground](https://developer.apple.com/sample-code/swift/downloads/standard-library.zip)
 - [Swift Algorithms Prototype](https://github.com/apple/swift/blob/master/test/Prototypes/Algorithms.swift)
-- [数据结构和算法之美 - 极客时间](http://gk.link/a/100NW)
+

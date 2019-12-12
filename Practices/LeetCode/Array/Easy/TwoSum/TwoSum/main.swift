@@ -44,12 +44,13 @@ func solution_01(_ nums: [Int], _ target: Int) -> [Int] {
 /// 空间复杂度：O(n)
 func solution_02(_ nums: [Int], _ target: Int) -> [Int] {
     var dic: [Int: Int] = [:]
+    // [2, 7, 11, 15]
     for (index, num) in nums.enumerated() {
-        let anotherNum = target - num
+        let anotherNum = target - num  //  7 = 9 - 2   2 = 9 - 7
         if let idxOfAnotherNum = dic[anotherNum] {
             return [idxOfAnotherNum, index]
         } else {
-            dic[num] = index
+            dic[num] = index // [2:0]
         }
     }
     return []

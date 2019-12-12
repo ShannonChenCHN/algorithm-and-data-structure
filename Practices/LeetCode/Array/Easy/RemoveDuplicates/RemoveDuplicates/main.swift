@@ -43,8 +43,8 @@ func solution(_ nums: inout [Int]) -> Int {
         return 0
     }
     
-    var validIdx = 0
-    for i in 1..<nums.count {
+    var validIdx = 0 // 慢指针
+    for i in 1..<nums.count {  // 快指针
         let num = nums[i]
         
         if num > nums[validIdx] {
@@ -52,6 +52,7 @@ func solution(_ nums: inout [Int]) -> Int {
             nums[validIdx] = num // 这里不是调换而是直接覆盖
         } else {
             // do nothing
+            continue
         }
     }
     

@@ -50,42 +50,42 @@ func maxProfit(_ prices: [Int]) -> Int {
  */
 func mySolution(_ prices: [Int]) -> Int {
     guard prices.count > 1 else {
-              return 0
-          }
-          
-          var minIndex = 0
-          var maxIndex = 0
-          var result = 0
-          for (index, price) in prices.enumerated() {
-              if (index == 0 && price > prices[index+1]) ||
-              (index == prices.count-1 && price > prices[index-1]) ||
-               (index > 0 && index < prices.count-1 && price > prices[index-1] && price >= prices[index+1]) { // 波峰
-                  
-                   maxIndex = index
-                   
-               // 到最高点卖出
-              if maxIndex > minIndex {
-                  let profit = prices[maxIndex] - prices[minIndex]
-                  result = result + profit
-                  
-                  print("profit: ", profit ,"=", prices[maxIndex], "-", prices[minIndex])
-                  
-                  minIndex = maxIndex
-              }
-                   
-              } else if (index == 0 && price < prices[index+1]) ||
-              (index == prices.count-1 && price < prices[index-1]) ||
-              (index > 0 && index < prices.count-1 && price <= prices[index-1] && price < prices[index+1])
-              { // 波谷
-                  minIndex = index
-              } else {
-                  // do nothing
-              }
-              
+        return 0
+    }
     
-              
-          }
-          return result
+    var minIndex = 0 // 波谷
+    var maxIndex = 0 // 波峰
+    var result = 0
+    for (index, price) in prices.enumerated() {
+        if (index == 0 && price > prices[index+1]) ||
+            (index == prices.count-1 && price > prices[index-1]) ||
+            (index > 0 && index < prices.count-1 && price > prices[index-1] && price >= prices[index+1]) { // 波峰
+            
+            maxIndex = index
+            
+            // 到最高点卖出
+            if maxIndex > minIndex {
+                let profit = prices[maxIndex] - prices[minIndex]
+                result = result + profit
+                
+                print("profit: ", profit ,"=", prices[maxIndex], "-", prices[minIndex])
+                
+                minIndex = maxIndex
+            }
+            
+        } else if (index == 0 && price < prices[index+1]) ||
+            (index == prices.count-1 && price < prices[index-1]) ||
+            (index > 0 && index < prices.count-1 && price <= prices[index-1] && price < prices[index+1])
+        { // 波谷
+            minIndex = index
+        } else {
+            // do nothing
+        }
+        
+        
+        
+    }
+    return result
 }
 
 
